@@ -6,9 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Dictionary</title>
     <link rel="stylesheet" href="../../bootstrap-5.1.3-dist/css/bootstrap.min.css">
 </head>
 <body>
@@ -32,7 +34,17 @@
 <div class="mb-3 row">
     <label for="vietnameseMeaning" class="col-sm-2 col-form-label">Vietnamese meaning</label>
     <div class="col-sm-10">
-        <p id="vietnameseMeaning"> ${result}</p>
+        <c:if test="${result == null}">
+
+            <p> Vui lòng nhập từ tiếng Anh</p>
+
+
+        </c:if>
+        <c:if test="${result != null}">
+
+            <p id="vietnameseMeaning"> ${result}</p>
+
+        </c:if>
     </div>
 </div>
 </body>
