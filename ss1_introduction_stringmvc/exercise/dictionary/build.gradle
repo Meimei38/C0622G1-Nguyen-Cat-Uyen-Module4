@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    // https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-spec
+    implementation group: 'org.apache.taglibs', name: 'taglibs-standard-spec', version: '1.2.5'
+
+    // https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl
+    runtimeOnly group: 'org.apache.taglibs', name: 'taglibs-standard-impl', version: '1.2.5'
+
+
+    compileJava.options.encoding = 'UTF-8'
+    tasks.withType(JavaCompile) {options.encoding = 'UTF-8'}
+
+//spring
+    implementation group: 'org.springframework', name: 'spring-core', version: '4.3.17.RELEASE'
+    implementation group: 'org.springframework', name: 'spring-context', version: '4.3.17.RELEASE'
+    implementation group: 'org.springframework', name: 'spring-beans', version: '4.3.17.RELEASE'
+    implementation group: 'org.springframework', name: 'spring-web', version: '4.3.17.RELEASE'
+    implementation group: 'org.springframework', name: 'spring-webmvc', version: '4.3.17.RELEASE'
+
+
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+    }
