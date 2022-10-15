@@ -14,7 +14,7 @@
 
 </head>
 <body>
-<form method="post"  >
+<form method="post">
     <div class="form-group">
         <label for="usdAmount">Currency Converter</label>
         <input type="text"

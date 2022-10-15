@@ -10,6 +10,7 @@ public class DictionaryService implements IDictionaryService {
 
     @Autowired
     IDictionaryRepo dictionaryRepo;
+
     @Override
     public String checkUp(String englishWord) {
         return dictionaryRepo.checkUp(englishWord);

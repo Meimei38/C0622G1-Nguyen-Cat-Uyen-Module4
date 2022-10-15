@@ -29,8 +29,8 @@ public class CurrencyConverterController {
 
             model.addAttribute("note", "Vui lòng nhập số tiền VND!");
 
-        }else {
-            model.addAttribute("usdAmount",usdAmount);
+        } else {
+            model.addAttribute("usdAmount", usdAmount);
             model.addAttribute("result", currencyConverterService.getCurrency(Double.parseDouble(usdAmount)));
         }
 

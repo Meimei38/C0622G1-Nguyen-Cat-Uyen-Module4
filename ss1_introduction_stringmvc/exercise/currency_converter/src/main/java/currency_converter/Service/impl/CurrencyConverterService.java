@@ -8,6 +8,6 @@ public class CurrencyConverterService implements ICurrencyConverterService {
 
     @Override
     public double getCurrency(double USDCurrency) {
-        return USDCurrency*23000;
+        return USDCurrency * 23000;
     }
 }
