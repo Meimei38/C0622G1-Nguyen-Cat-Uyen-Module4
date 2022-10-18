@@ -5,10 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbab39dd-2c71-4664-aab0-33237b313167" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/currency_converter/Controller/CurrencyConverterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/currency_converter/Controller/CurrencyConverterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/currency_converter/Service/impl/CurrencyConverterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/currency_converter/Service/impl/CurrencyConverterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/exercise/product_management/src/main/java/config/FilterUTF8.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/exercise/product_management/src/main/java/product_management/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/exercise/product_management/src/main/java/product_management/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/exercise/product_management/src/main/java/product_management/service/IProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/exercise/product_management/src/main/java/product_management/service/impl/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/exercise/product_management/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/exercise/product_management/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/exercise/product_management/src/main/webapp/WEB-INF/views/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/exercise/product_management/src/main/webapp/WEB-INF/views/delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/exercise/product_management/src/main/webapp/WEB-INF/views/edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/exercise/product_management/src/main/webapp/WEB-INF/views/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/exercise/product_management/src/main/webapp/WEB-INF/views/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/exercise/product_management/src/main/webapp/WEB-INF/views/view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/exercise/product_management/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/src/main/java/config/FilterUTF8.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/src/main/java/customer_management/controller/CustomerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/src/main/java/customer_management/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/src/main/java/customer_management/service/ICustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/src/main/java/customer_management/service/impl/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/src/main/webapp/WEB-INF/views/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/src/main/webapp/WEB-INF/views/delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/src/main/webapp/WEB-INF/views/edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/src/main/webapp/WEB-INF/views/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/src/main/webapp/WEB-INF/views/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/src/main/webapp/WEB-INF/views/view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_view_thymeleaf/practice/customer_management/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss3_data_binding_form/exercise/save_email_settings/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss3_data_binding_form/exercise/save_email_settings/.idea/gradle.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,6 +209,7 @@
       <workItem from="1665672826886" duration="1384000" />
       <workItem from="1665674487993" duration="11000" />
       <workItem from="1665674629533" duration="1603000" />
+      <workItem from="1666086755755" duration="38000" />
     </task>
     <servers />
   </component>
