@@ -21,7 +21,10 @@
         <span th:text="${success}"></span>
     </div>
 </div>
-<table id="products">
+<p th:if="${products.isEmpty()}">
+    <span th:text="${notify}"></span>
+</p>
+<table id="products" th:if="${!products.isEmpty()}">
     <thead>
     <tr>
         <th>Name</th>
