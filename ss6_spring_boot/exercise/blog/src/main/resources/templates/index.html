@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+<body>
+<h3>Blog</h3>
+<p>
+    <a th:href="@{/blog/create}">
+        Create new blog
+    </a>
+
+        <form action="/blog/search" method="get">
+            <input type="search" name="searchName">
+            <input type="submit">
+        </form>
+
+</p>
+<div class="notify">
+    <div th:if="${success}">
+        <span th:text="${success}"></span>
+    </div>
+</div>
+<p th:if="${blogs.isEmpty()}">
+    <span th:text="${notify}"></span>
+</p>
+<table id="products" th:if="${!blogs.isEmpty()}">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Author</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row,rowStat : ${blogs}">
+        <td th:text="${row.getName()}"></td>
+        <td th:text="${row.getDate()}"></td>
+        <td th:text="${row.getAuthor()}"></td>
+        <td><a th:href="@{/blog/{id}/edit(id=${row.getId()})}">edit</a></td>
+        <td><a th:href="@{/blog/{id}/delete(id=${row.getId()})}">delete</a></td>
+        <td><a th:href="@{/blog/{id}/view(id=${row.getId()})}">view</a></td>
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
