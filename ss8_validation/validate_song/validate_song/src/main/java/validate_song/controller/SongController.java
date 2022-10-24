@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import validate_song.dto.SongDto;
 import validate_song.model.Song;
@@ -50,5 +47,29 @@ public class SongController {
         List<Song>songs = songService.findAll();
         modelAndView.addObject("songs", songs);
         return modelAndView;
+    }
+    @GetMapping("/edit-song/{id}")
+    public ModelAndView showEditForm(@PathVariable Integer id ){
+        Song song = songService.findById(id);
+        ModelAndView modelAndView = new ModelAndView("/edit");
+        SongDto songDto = new SongDto();
+        BeanUtils.copyProperties(song, songDto);
+        modelAndView.addObject("songDto", songDto);
+        return modelAndView;
+    }
+    @PostMapping("/edit-song")
+    public ModelAndView updateSong(@Validated @ModelAttribute("songDto") SongDto songDto, BindingResult bindingResult){
+        new SongDto().validate(songDto, bindingResult);
+        if (bindingResult.hasFieldErrors()) {
+            return new ModelAndView("/edit");
+        } else {
+            Song song = new Song();
+            BeanUtils.copyProperties(songDto, song);
+            songService.save(song);
+            ModelAndView modelAndView = new ModelAndView("/list");
+            modelAndView.addObject("songs",songService.findAll());
+            modelAndView.addObject("message","New song updated!");
+            return modelAndView;
+        }
     }
 }

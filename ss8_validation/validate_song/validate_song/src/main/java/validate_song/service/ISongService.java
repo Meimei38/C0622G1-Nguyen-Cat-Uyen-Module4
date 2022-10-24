@@ -8,4 +8,6 @@ public interface ISongService {
     void save(Song song);
 
     List<Song> findAll();
+
+    Song findById(Integer id);
 }

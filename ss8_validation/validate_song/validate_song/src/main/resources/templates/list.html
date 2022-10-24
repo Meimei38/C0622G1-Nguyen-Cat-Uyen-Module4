@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>List</title>
+    <meta charset="UTF-8">
+    <title>List</title>
 </head>
 <body>
 <a href="/create-song">Create new song</a>
 <h1>Songs</h1>
 <table border="1">
-  <tr>
-    <td th:if="${!message.isEmpty()}">
-      <p></p>
-    </td>
-  </tr>
-  <tr>
-    <th>Song name</th>
-    <th>Artist</th>
-    <th>Genre </th>
-    <th>Edit</th>
-    <th>Delete</th>
-
-  </tr>
-  <th:block th:each="song : ${songs}">
     <tr>
-      <td th:text="${song.songName}"></td>
-      <td th:text="${song.artist}"></td>
-      <td th:text="${song.genre}"></td>
-
-      <td><a th:href="@{/edit-song/__${song.id}__ }">Edit</a></td>
-      <td><a th:href="@{/delete-song/__${song.id}__ }">Delete</a></td>
+        <td th:if="${message}">
+            <p th:text="${message}"></p>
+        </td>
     </tr>
-  </th:block>
+    <tr>
+        <th>Song name</th>
+        <th>Artist</th>
+        <th>Genre</th>
+        <th>Edit</th>
+        <th>Delete</th>
+
+    </tr>
+    <th:block th:each="song : ${songs}">
+        <tr>
+            <td th:text="${song.songName}"></td>
+            <td th:text="${song.artist}"></td>
+            <td th:text="${song.genre}"></td>
+
+            <td><a th:href="@{/edit-song/{id}(id=${song.getId()})}">Edit</a></td>
+            <td><a th:href="@{/delete-song/{id}(id=${song.getId()})}">Delete</a></td>
+        </tr>
+    </th:block>
 </table>
 </body>
 </html>
