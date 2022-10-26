@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+<body>
+<h3>View Book</h3>
+<p>
+    <a th:href="@{/book}">
+        Back to book list
+    </a>
+</p>
+<p style="color: red; font-size: larger;font-weight: bold" th:if="${message}" th:text="${message}">
+<p style="color: red; font-size: larger;font-weight: bold" th:if="${otpCode}" th:text="${otpCode}">
+</p>
+<div id="detail">
+    <div class="cusdetail">
+        <label>Name:</label>
+        <label th:text="${book.name}"></label>
+    </div>
+    <div class="cusdetail">
+        <label>Author:</label>
+        <label th:text="${book.author}"></label>
+    </div>
+    <div class="cusdetail">
+        <label>Quantity:</label>
+        <label th:text="${book.quantity}"></label>
+    </div>
+    <div>
+        <form th:action="@{/book/__${book.id}__/borrow}">
+            <button type="submit"> Borrow </button>
+        </form>
+    </div>
+
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
