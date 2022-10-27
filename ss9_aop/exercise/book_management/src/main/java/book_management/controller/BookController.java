@@ -6,13 +6,11 @@ import book_management.service.IBookService;
 import book_management.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -23,10 +21,11 @@ public class BookController {
 
     @Autowired
     IOrderService orderService;
+    public final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd - MM - yyyy");
 
     @GetMapping("")
     public ModelAndView showListBook() {
-        ModelAndView modelAndView = new ModelAndView("book/index");
+        ModelAndView modelAndView = new ModelAndView("book/list");
         List<Book> books = bookService.findAll();
         modelAndView.addObject("books", books);
         return modelAndView;
@@ -47,9 +46,36 @@ public class BookController {
         bookService.save(book);
         OrderBook orderBook = orderService.createOrder(book);
         ModelAndView modelAndView = new ModelAndView("book/view");
-        modelAndView.addObject("otpCode",orderBook.getOtpCode());
+        modelAndView.addObject("otpCode","Your otp code is "+orderBook.getOtpCode());
         modelAndView.addObject("book",book);
-        modelAndView.addObject("message","Mượn sách thành công hỉ");
+        modelAndView.addObject("message","You have borrowed "+book.getName()+", on "+dateTimeFormatter.format(orderBook.getBorrowDate())+"." +
+                " Your book should be returned before "+dateTimeFormatter.format(orderBook.getReturnDate()));
+        return modelAndView;
+    }
+    @GetMapping("/{id}/return")
+    public ModelAndView showOtpForm(@PathVariable Integer id){
+        ModelAndView modelAndView = new ModelAndView("book/otpForm");
+        Book book = bookService.findById(id);
+        modelAndView.addObject("book",book);
+        return modelAndView;
+    }
+    @GetMapping("/returnCheck")
+    public ModelAndView returnBook(@RequestParam Integer id, String code){
+        ModelAndView modelAndView = new ModelAndView("book/list");
+        Book book = bookService.findBookReturn(id, code);
+        OrderBook orderBook = orderService.findOrderReturn(id,code);
+        if(book != null){
+            book.setQuantity(book.getQuantity()+1);
+            bookService.save(book);
+            orderService.deleteOrderBookById(orderBook.getId());
+            List<Book> books = bookService.findAll();
+            modelAndView.addObject("books", books);
+            modelAndView.addObject("success","You have returned a book named: "+book.getName());
+        }else {
+            List<Book> books = bookService.findAll();
+            modelAndView.addObject("books", books);
+            modelAndView.addObject("success","Wrong OTP!");
+        }
         return modelAndView;
     }
 

@@ -16,7 +16,7 @@ public class OrderService implements IOrderService {
 
     @Override
     public OrderBook createOrder(Book book) {
-        String code = String.valueOf(Math.floor(Math.random() * (99999 - 10000 ) + 10000));
+        String code = String.valueOf((int) (Math.random() * 100000));
         OrderBook orderBook = new OrderBook();
         orderBook.setBorrowDate(LocalDate.now());
         orderBook.setReturnDate(LocalDate.now().plusDays(5));
@@ -25,4 +25,17 @@ public class OrderService implements IOrderService {
         orderRepository.save(orderBook);
         return orderBook;
     }
+
+    @Override
+    public void deleteOrderBookById(Integer id) {
+        orderRepository.deleteOrderBookById(id);
+    }
+
+
+    @Override
+    public OrderBook findOrderReturn(Integer id, String code) {
+        return orderRepository.findOrderReturn(id,code);
+    }
+
+
 }

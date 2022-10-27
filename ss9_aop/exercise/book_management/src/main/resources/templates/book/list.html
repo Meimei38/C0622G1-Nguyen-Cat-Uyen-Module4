@@ -21,18 +21,16 @@
         <span th:text="${success}"></span>
     </div>
 </div>
-<p th:if="${books.isEmpty()}">
-    <span th:text="${notify}"></span>
-</p>
-<table id="books" th:if="${!books.isEmpty()}">
+
+<table id="books" >
     <thead>
     <tr>
         <th>Name</th>
         <th>Author</th>
         <th>Quantity</th>
-        <th>Edit</th>
-        <th>Delete</th>
         <th>View</th>
+        <th>Return</th>
+
     </tr>
     </thead>
     <tbody>
@@ -40,9 +38,9 @@
         <td th:text="${row.getName()}"></td>
         <td th:text="${row.getAuthor()}"></td>
         <td th:text="${row.getQuantity()}"></td>
-        <td><a th:href="@{/book/{id}/edit(id=${row.getId()})}">Edit</a></td>
-        <td><a th:href="@{/book/{id}/delete(id=${row.getId()})}">Delete</a></td>
         <td><a th:href="@{/book/{id}/view(id=${row.getId()})}">View</a></td>
+        <td><a th:href="@{/book/{id}/return(id=${row.getId()})}">Return</a></td>
+
     </tr>
     </tbody>
 </table>
