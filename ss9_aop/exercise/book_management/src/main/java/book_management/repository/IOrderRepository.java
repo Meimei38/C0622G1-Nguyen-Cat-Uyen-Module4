@@ -11,10 +11,10 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 
 @Repository
+ @Transactional
 public interface IOrderRepository extends JpaRepository<OrderBook,Integer> {
-    @Transactional
+
     void deleteOrderBookById(Integer id);
-    @Transactional
     @Query(value = "select * from order_book join book on order_book.book_id = book.id where book.id= :id and order_book.otp_code= :code", nativeQuery = true)
     OrderBook findOrderReturn(@Param("id")Integer id, @Param("code") String code);
 }

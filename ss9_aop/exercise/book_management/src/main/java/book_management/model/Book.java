@@ -12,7 +12,7 @@ public class Book {
     private String author;
     private Integer quantity;
 
-    @OneToMany(mappedBy = "book",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<OrderBook> orderBooks;
 
     public Book() {

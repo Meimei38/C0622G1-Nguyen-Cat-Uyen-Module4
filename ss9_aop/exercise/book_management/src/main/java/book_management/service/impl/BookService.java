@@ -24,8 +24,16 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public void save(Book book) {
-        bookRepository.save(book);
+    public Book save(Book book) {
+        Integer bookCount = book.getQuantity();
+        if(bookCount >0){
+            book.setQuantity(bookCount-1);
+            bookRepository.save(book);
+            return book;
+        }else {
+            return null;
+        }
+
     }
 
     @Override

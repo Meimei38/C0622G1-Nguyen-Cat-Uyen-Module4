@@ -40,17 +40,21 @@ public class BookController {
     }
 
     @GetMapping("/{id}/borrow")
-    public ModelAndView borrow (@PathVariable Integer id){
+    public ModelAndView borrow (@PathVariable Integer id) throws Exception {
         Book book = bookService.findById(id);
-        book.setQuantity(book.getQuantity()-1);
-        bookService.save(book);
-        OrderBook orderBook = orderService.createOrder(book);
-        ModelAndView modelAndView = new ModelAndView("book/view");
-        modelAndView.addObject("otpCode","Your otp code is "+orderBook.getOtpCode());
-        modelAndView.addObject("book",book);
-        modelAndView.addObject("message","You have borrowed "+book.getName()+", on "+dateTimeFormatter.format(orderBook.getBorrowDate())+"." +
-                " Your book should be returned before "+dateTimeFormatter.format(orderBook.getReturnDate()));
-        return modelAndView;
+        if(bookService.save(book)==null){
+            throw new Exception();
+        }else {
+            OrderBook orderBook = orderService.createOrder(book);
+            ModelAndView modelAndView = new ModelAndView("book/view");
+            modelAndView.addObject("otpCode","Your otp code is "+orderBook.getOtpCode());
+            modelAndView.addObject("book",book);
+            modelAndView.addObject("message","You have borrowed "+book.getName()+", on "+dateTimeFormatter.format(orderBook.getBorrowDate())+"." +
+                    " Your book should be returned before "+dateTimeFormatter.format(orderBook.getReturnDate()));
+            return modelAndView;
+        }
+
+
     }
     @GetMapping("/{id}/return")
     public ModelAndView showOtpForm(@PathVariable Integer id){
@@ -78,7 +82,10 @@ public class BookController {
         }
         return modelAndView;
     }
-
+    @ExceptionHandler(Exception.class)
+    public String handleError() {
+        return "book/error";
+    }
 
 
 }

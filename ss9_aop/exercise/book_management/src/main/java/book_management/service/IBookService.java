@@ -9,7 +9,7 @@ public interface IBookService {
 
     Book findById(Integer id);
 
-    void save(Book book);
+    Book save(Book book);
 
     Book findBookReturn(Integer id, String code);
 }
