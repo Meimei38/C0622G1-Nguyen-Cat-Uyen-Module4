@@ -34,8 +34,14 @@
                     <td th:text="${status.count}"></td>
                     <td th:text="${productMap.key.name}"></td>
                     <td><img th:src="@{${productMap.key.image}}" style="width:70px; height: auto"></td>
-                    <td th:text="${productMap.key.price}"></td>
-                    <td th:text="${productMap.value}"></td>
+                    <td th:text="${productMap.key.price}"> </td>
+                    <td>
+                        <form action="shop/updateQuantity">
+                            <input type="number" th:value="${productMap.value}" name="quantity" min="0" step="1"  oninput="this.value = Math.abs(this.value)">
+                            <input hidden type="number" name="id" th:value="${productMap.key.id}">
+                            <input hidden type="submit">
+                        </form>
+                    </td>
                     <td th:text="${productMap.key.price * productMap.value}"></td>
                     <td>
                         <a th:href="@{/shop/add/__${productMap.key.id}__}">

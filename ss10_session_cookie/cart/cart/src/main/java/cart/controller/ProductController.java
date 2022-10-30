@@ -72,5 +72,14 @@ public class ProductController {
         }
         return "redirect:/cart";
 }
-
+@GetMapping("/updateQuantity")
+    public String updateQuantity(@RequestParam Long id, Integer quantity, @SessionAttribute("cart") CartDto cart){
+        Optional<Product> productOption = productService.findById(id);
+        if(productOption.isPresent()){
+            ProductDto productDto = new ProductDto();
+            BeanUtils.copyProperties(productOption.get(),productDto);
+            cart.updateQuantity(productDto, quantity);
+        }
+        return "redirect:/cart";
+}
 }

@@ -49,4 +49,15 @@ public class CartDto {
     public void remove(ProductDto productDto) {
         productMap.remove(productDto);
     }
+
+    public void updateQuantity(ProductDto productDto, Integer quantity) {
+        if (productMap.containsKey(productDto)) {
+            if (quantity == 0) {
+                productMap.remove(productDto);
+            } else {
+                productMap.replace(productDto, quantity);
+
+            }
+        }
+    }
 }
