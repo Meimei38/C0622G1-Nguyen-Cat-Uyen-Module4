@@ -81,7 +81,7 @@ public class BlogController {
     @GetMapping("/view/{id}")
     public String view(@PathVariable int id, Model model) {
         model.addAttribute("blog", iBlogService.findById(id));
-        model.addAttribute("categorygList", iCategoryService.findAll());
+        model.addAttribute("categoryList", iCategoryService.findAll());
         return "blog/view";
     }
 }

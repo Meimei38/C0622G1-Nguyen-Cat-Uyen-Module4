@@ -2,6 +2,7 @@ package blogmanagement.blogmanagement.service;
 
 import blogmanagement.blogmanagement.dto.BlogDto;
 import blogmanagement.blogmanagement.model.Blog;
+import blogmanagement.blogmanagement.model.Category;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -23,4 +24,8 @@ public interface IBlogService {
     Page<Blog> searchByTitle(String title, Pageable pageable);
 
     List<BlogDto> showListDto();
+
+    List<Blog> findByCategory(Category category);
+
+    List<Blog> findAllBlog();
 }

@@ -2,6 +2,7 @@ package blogmanagement.blogmanagement.service.impl;
 
 import blogmanagement.blogmanagement.dto.BlogDto;
 import blogmanagement.blogmanagement.model.Blog;
+import blogmanagement.blogmanagement.model.Category;
 import blogmanagement.blogmanagement.repository.IBlogRepository;
 import blogmanagement.blogmanagement.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,5 +55,15 @@ public class BlogService implements IBlogService {
     @Override
     public List<BlogDto> showListDto() {
         return iBlogRepository.showListDto();
+    }
+
+    @Override
+    public List<Blog> findByCategory(Category category) {
+        return iBlogRepository.findByCategory(category);
+    }
+
+    @Override
+    public List<Blog> findAllBlog() {
+        return iBlogRepository.findAll();
     }
 }

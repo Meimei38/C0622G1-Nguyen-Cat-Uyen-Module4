@@ -1,5 +1,6 @@
 package blogmanagement.blogmanagement.service;
 
+import blogmanagement.blogmanagement.model.Blog;
 import blogmanagement.blogmanagement.model.Category;
 
 import java.util.List;
@@ -14,4 +15,5 @@ public interface ICategoryService {
     void update(Category category);
 
     void remove(int id);
+
 }

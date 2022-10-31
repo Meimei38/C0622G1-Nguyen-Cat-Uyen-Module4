@@ -2,6 +2,7 @@ package blogmanagement.blogmanagement.repository;
 
 import blogmanagement.blogmanagement.dto.BlogDto;
 import blogmanagement.blogmanagement.model.Blog;
+import blogmanagement.blogmanagement.model.Category;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,4 +19,6 @@ public interface IBlogRepository extends JpaRepository<Blog, Integer> {
 
     @Query(value = "select b.title as titleDto, c.category_name as categoryDto from blog b join category c on b.category_id = c.id", nativeQuery = true)
     List<BlogDto> showListDto();
+
+    List<Blog> findByCategory(Category category);
 }
