@@ -14,10 +14,11 @@
 
 <a th:href="@{/add}">Add new</a><br><br>
 
-<form>
+
     <input id="searchName" placeholder="Search by Title..." name="search" type="text"/>
     <button id="searchBlog" type="submit">Search</button>
-</form>
+
+
 
 <p style="color: green" th:text="${mess}"></p>
 
@@ -46,7 +47,6 @@
     <button id="next" type="submit">Loading</button>
 
 
-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -56,32 +56,34 @@
 <script src="jquery-3.6.1.min.js"></script>
 <script>
     $(document).ready(function () {
-        let pageNumber =1;
-        function init() {
-                $("tbody").empty();
-                $.ajax({
-                    url: "http://localhost:8080/api/blog/v1",
-                    type: "GET",
-                    dataType: "json",
-                    success: function (data) {
-                        let tr = [];
-                        for (let i = 0; i < data.length; i++) {
-                            tr.push("<tr>")
-                            tr.push("<td>" + data[i].title + "</td>");
-                            tr.push("<td>" + data[i].category.categoryName + "</td>");
-                            tr.push("<td>" + data[i].writer + "</td>");
-                            tr.push("</tr>")
-                        }
-                        $("tbody").append(tr.join(""));
 
+        let pageNumber = 1;
+
+        function init() {
+            $("tbody").empty();
+            $.ajax({
+                url: "http://localhost:8080/api/blog/v1",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    let tr = [];
+                    for (let i = 0; i < data.length; i++) {
+                        tr.push("<tr>")
+                        tr.push("<td>" + data[i].title + "</td>");
+                        tr.push("<td>" + data[i].category.categoryName + "</td>");
+                        tr.push("<td>" + data[i].writer + "</td>");
+                        tr.push("</tr>")
                     }
-                })
-            }
+                    $("tbody").append(tr.join(""));
+
+                }
+            })
+        }
 
         init();
-        $("#next").click(function() {
+        $("#next").click(function () {
             $.ajax({
-                url: "http://localhost:8080/api/blog/v1"+"?page="+ pageNumber,
+                url: "http://localhost:8080/api/blog/v1" + "?page=" + pageNumber,
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
@@ -99,11 +101,11 @@
             })
         })
 
-        $("#searchBlog").click(function() {
+        $("#searchBlog").click(function () {
+            let searchName = $("#searchName").val();
             $("tbody").empty();
-
             $.ajax({
-                url: "http://localhost:8080/api/blog/v1/search?search="+$("#searchName").val(),
+                url: "http://localhost:8080/api/blog/v1/search?search=" + searchName,
                 type: "GET",
                 dataType: "json",
                 success: function (data) {
