@@ -28,4 +28,9 @@ public interface IBlogService {
     List<Blog> findByCategory(Category category);
 
     List<Blog> findAllBlog();
+
+
+    Page<Blog> findPageable(Pageable pageable);
+
+    List<Blog> findByTitleContaining(String title);
 }

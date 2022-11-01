@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+
 public class BlogController {
     @Autowired
     private IBlogService iBlogService;
@@ -21,7 +22,7 @@ public class BlogController {
     private ICategoryService iCategoryService;
 
     @GetMapping("")
-    public String showList(@PageableDefault(value = 5, sort = "date_created", direction = Sort.Direction.DESC)
+    public String showList(@PageableDefault(value = 1, sort = "date_created", direction = Sort.Direction.DESC)
                                    Pageable pageable, @RequestParam(value = "search", defaultValue = "")
                                    String search, Model model) {
         model.addAttribute("blogList", iBlogService.searchByTitle(search, pageable));
