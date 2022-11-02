@@ -45,7 +45,7 @@ public class RestBlogController {
     @GetMapping("/search")
     public ResponseEntity<List<Blog>> showList(@RequestParam(value = "search")
                                                String search) {
-        
+
         List<Blog> blogList = blogService.findByTitleContaining(search);
         if (blogList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
