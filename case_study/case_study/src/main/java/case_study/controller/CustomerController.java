@@ -32,10 +32,13 @@ public class CustomerController {
     ICustomerTypeService customerTypeService;
 
     @GetMapping("/list")
-    public ModelAndView showList(@PageableDefault(value = 2) Pageable pageable) {
+    public ModelAndView showList(@PageableDefault(value = 5) Pageable pageable, @RequestParam(defaultValue = "") String searchName, @RequestParam(defaultValue = "") String searchEmail, @RequestParam(defaultValue = "") String searchCustomerType) {
         ModelAndView modelAndView = new ModelAndView("customer/list");
-        Page<Customer> customers = customerService.findAllCustomersExist(pageable);
+        Page<Customer> customers = customerService.findAllCustomersExist(pageable, searchName,searchEmail,searchCustomerType);
         modelAndView.addObject("customers", customers);
+        modelAndView.addObject("searchName", searchName);
+        modelAndView.addObject("searchEmail", searchEmail);
+        modelAndView.addObject("searchCustomerType", searchCustomerType);
         modelAndView.addObject("customerModal", new Customer());
         return modelAndView;
     }

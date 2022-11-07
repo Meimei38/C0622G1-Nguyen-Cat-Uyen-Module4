@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface ICustomerService {
 
-    Page<Customer> findAllCustomersExist(Pageable pageable);
+    Page<Customer> findAllCustomersExist(Pageable pageable, String name, String email, String customerType);
 
     Customer findCustomerById(Integer id);
 

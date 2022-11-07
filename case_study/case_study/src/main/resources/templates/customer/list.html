@@ -32,24 +32,19 @@
             <input type="hidden" name="action" value="add">
             <button class="btn" type="submit" id="add"> Add customer</button>
         </form>
-        <form action="/customer" method="post" style="width:50%; margin-right: 0; padding-left: 80px">
+        <form action="/customer/list"  style="width:50%; margin-right: 0; padding-left: 80px">
             <input type="hidden" name="action" value="search">
             <div class="row px-0 mx-0">
                 <div class="col-3">
-                    <input type="text" name="searchName" class="form-control" placeholder="Name">
+                    <input type="text" name="searchName" class="form-control" placeholder="Name" th:value="${searchName}">
                 </div>
                 <div class="col-3">
-                    <input type="date" name="searchDateOfBirth" class="form-control" placeholder="Date Of Birth">
+                    <input type="text" name="searchEmail" class="form-control" placeholder="Email" th:value="${searchEmail}">
                 </div>
                 <div class="col-3">
-                    <select class="form-select" name="searchPositionId">
-                        <option value="">Position</option>
-                        <option value=1> Lễ tân</option>
-                        <option value=2> Phục vụ</option>
-                        <option value=3> Chuyên viên</option>
-                        <option value=4> Giám sát</option>
-                        <option value=5> Quản lý</option>
-                        <option value=6> Giám đốc</option>
+                    <select class="form-select" name="searchCustomerType" id="searchCustomerType">
+                            <option value="">Customer Type</option>
+                            <option th:each="item: ${customerTypeList}" th:value="${item.id}" th:text="${item.name}" th:selected="${item.id} == ${searchCustomerType}"></option>
                     </select>
                 </div>
                 <div class="col-3 px-0" style="right: 0">
@@ -118,10 +113,10 @@
         </table>
     </div>
 </div>
-<div>
-    <a th:href="@{'/customer/list'(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}">Previous</a>
+<div style="padding-left: 30px">
+    <a th:href="@{'/customer/list'(page=${customers.number - 1}, searchName=${searchName}, searchEmail=${searchEmail}, searchCustomerType=${searchCustomerType})}" th:if="${customers.hasPrevious()}">Previous</a>
     <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}"></span>
-    <a th:href="@{'/customer/list'(page=${customers.number + 1})}"
+    <a th:href="@{'/customer/list'(page=${customers.number + 1}, searchName=${searchName}, searchEmail=${searchEmail}, searchCustomerType=${searchCustomerType})}"
        th:if="${customers.hasNext()}">Next</a>
 </div>
 <footer th:replace="/layout/list :: footer">
@@ -155,17 +150,18 @@
 <div class="modal  fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-xl">
-            <div class="modal-content">
+        <div class="modal-content">
 
-                <div class="modal-header btn-success">
-                    <h5 class="modal-title" id="exampleModalLabel-edit">Edit Customer</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                </div>
-                <!--edit modal body-->
-                <div class="modal-body btn-light p-3 px-3 mx-0">
-                    <div class="d-flex justify-content-center">
-                        <form  class="w-100" id="editForm" action="/customer/edit" method="post" th:object="${customerModal}">
+            <div class="modal-header btn-success">
+                <h5 class="modal-title" id="exampleModalLabel-edit">Edit Customer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <!--edit modal body-->
+            <div class="modal-body btn-light p-3 px-3 mx-0">
+                <div class="d-flex justify-content-center">
+                    <form class="w-100" id="editForm" action="/customer/edit" method="post"
+                          th:object="${customerModal}">
                         <input hidden type="text" id="id" th:field="*{id}">
 
                         <div class="form-group">
@@ -237,15 +233,15 @@
                                 <span class="input-group-text"><i class="fa-solid fa-map"></i></span>
                             </div>
                         </div>
-                        </form>
-                    </div>
+                    </form>
                 </div>
+            </div>
             <div class="btn-light modal-footer" id="editButton">
                 <button id="editCancel" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 <button form="editForm" type="submit" class="btn btn-primary">Save</button>
             </div>
+        </div>
     </div>
-</div>
 </div>
 
 
