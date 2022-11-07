@@ -73,7 +73,13 @@ public class CustomerController {
 
     @GetMapping("/add")
     public ModelAndView showCreateForm() {
-        ModelAndView modelAndView = new ModelAndView("customer/create","customer",new Customer());
-        return modelAndView;
+        return new ModelAndView("customer/create","customer",new Customer());
+    }
+    @PostMapping("/add")
+    public String addCustomer(@ModelAttribute Customer customer, RedirectAttributes redirect){
+        customer.setIsPresent(1);
+        customerService.save(customer);
+        redirect.addFlashAttribute("mess","New customer added!");
+        return "redirect:/customer/list";
     }
 }

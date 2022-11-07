@@ -19,7 +19,7 @@ public class Customer {
     private String email;
     private String address;
 
-    @Column(columnDefinition = "bit default 1")
+    @Column(columnDefinition = "bit(1) default 1")
     private Integer isPresent;
 
     @ManyToOne
