@@ -11,7 +11,7 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    @Column(columnDefinition = "DATETIME")
+    @Column(columnDefinition = "DATE")
     private String dateOfBirth;
     private Integer gender;
     private String idCard;
