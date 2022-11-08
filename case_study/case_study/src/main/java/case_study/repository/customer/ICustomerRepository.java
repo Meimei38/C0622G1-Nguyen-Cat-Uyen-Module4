@@ -1,4 +1,4 @@
-package case_study.repository;
+package case_study.repository.customer;
 
 import case_study.model.customer.Customer;
 import org.springframework.data.domain.Page;

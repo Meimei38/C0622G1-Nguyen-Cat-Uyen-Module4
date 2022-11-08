@@ -44,7 +44,9 @@
                 <div class="col-3">
                     <select class="form-select" name="searchCustomerType" id="searchCustomerType">
                             <option value="">Customer Type</option>
-                            <option th:each="item: ${customerTypeList}" th:value="${item.id}" th:text="${item.name}" th:selected="${item.id} == ${searchCustomerType}"></option>
+                            <option th:each="item: ${customerTypeList}"
+                                    th:value="${item.id}" th:text="${item.name}"
+                                    th:selected="${item.id} == ${searchCustomerType}"></option>
                     </select>
                 </div>
                 <div class="col-3 px-0" style="right: 0">

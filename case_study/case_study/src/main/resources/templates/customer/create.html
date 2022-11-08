@@ -25,9 +25,9 @@
         </h1>
     </div>
 
-    <th:if test="${mess!=null}">
+    <th:block th:if="${mess!=null}">
         <h4 th:text="${mess}"></h4>
-    </th:if>
+    </th:block>
 
     <div class="row">
         <div class="main">
