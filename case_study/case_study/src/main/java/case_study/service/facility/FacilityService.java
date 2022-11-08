@@ -3,6 +3,8 @@ package case_study.service.facility;
 import case_study.model.facility.Facility;
 import case_study.repository.facility.IFacilityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,7 +46,13 @@ public class FacilityService implements IFacilityService{
     }
 
     @Override
-    public List<Facility> findFacilityExist() {
-        return null;
+    public Page<Facility> findFacilityExist(Pageable pageable, String searchName, String searchFacilityType) {
+        return facilityRepository.findFacilityExist(pageable, searchName, searchFacilityType);
     }
+
+    @Override
+    public Facility findById(Integer id) {
+        return facilityRepository.findByIdAndIsPresent(id, 1);
+    }
+
 }

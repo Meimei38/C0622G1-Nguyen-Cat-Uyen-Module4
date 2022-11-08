@@ -80,15 +80,22 @@
             <td>
                 <button type="button" class="viewFacility btn btn-success"
                         data-bs-toggle="modal"
-                        th:attr="onclick=|infoView('${item.id}','${item.name}'
+                        th:attr="onclick=|infoView('${item.id}','${item.name}',
                                                     '${item.area}','${item.cost}',
                                                     '${item.maxPeople}','${item.rentType.id}',
                                                     '${item.facilityType.id}', '${item.standardRoom}',
                                                     '${item.numberOfFloors}','${item.descriptionOtherConvenience}',
                                                     '${item.poolArea}','${item.facilityFree}')|"
                         data-bs-target="#viewModal">
-                    Edit
+                    View
                 </button>
+            </td>
+            <!--Edit button -->
+            <td>
+                <a class="btn btn-primary"
+                   th:href="@{/facility/edit/__${item.id}__}">
+                    Edit
+                </a>
             </td>
             <!--delete button-->
             <td>
@@ -108,7 +115,7 @@
     <a th:href="@{'/facility/list'(page=${facilities.number - 1}, searchName=${searchName}, searchFacilityType=${searchFacilityType})}"
        th:if="${facilities.hasPrevious()}">Previous</a>
     <span th:text="${facilities.number + 1}"></span>/<span th:text="${facilities.totalPages}"></span>
-    <a th:href="@{'/facility/list'(page=${customers.number + 1}, searchName=${searchName}, searchFacilityType=${searchFacilityType})}"
+    <a th:href="@{'/facility/list'(page=${facilities.number + 1}, searchName=${searchName}, searchFacilityType=${searchFacilityType})}"
        th:if="${facilities.hasNext()}">Next</a>
 </div>
 <footer th:replace="/layout/list :: footer">
@@ -129,7 +136,7 @@
             </div>
             <div class="btn-light modal-footer" id="deleteButton">
                 <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form id="deleteForm" action="/customer/delete" method="post">
+                <form id="deleteForm" action="/facility/delete" method="post">
                     <input type="hidden" name="id" id="idDelete">
                     <input type="submit" value="Confirm" class="btn btn-warning">
                 </form>
@@ -141,7 +148,7 @@
 <!--View modal-->
 <div class="modal  fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
             <div class="modal-header btn-success">
@@ -151,75 +158,58 @@
             </div>
             <!--view modal body-->
             <div class="modal-body btn-light p-3 px-3 mx-0">
-                <div class="d-flex justify-content-center">
-                    <table>
+                <div class="d-flex">
+                    <table class="table border-1">
                         <tr>
-                            <th>
-                                <label for="name" class="h6">Name:</label>
-                            </th>
+                            <td> Id: </td>
+                            <td id="id"></td>
+                        </tr>
+                        <tr>
+                            <td> Name: </td>
                             <td id="name"></td>
                         </tr>
 
                         <tr>
-                            <th>
-                                <label for="area" class="h6">Area:</label>
-                            </th>
+                            <td> Area: </td>
                             <td id="area"></td>
                         </tr>
 
                         <tr>
-                            <th>
-                                <label for="cost" class="h6">Cost:</label>
-                            </th>
+                            <td> Cost </td>
                             <td id="cost"></td>
                         </tr>
 
                         <tr>
-                            <th>
-                                <label for="maxPeople" class="h6">Max People:</label>
-                            </th>
+                            <td> Max people: </td>
                             <td id="maxPeople"></td>
                         </tr>
 
                         <tr>
-                            <th>
-                                <label for="standardRoom" class="h6">Room Standard:</label>
-                            </th>
+                            <td> Room Standard: </td>
                             <td id="standardRoom"></td>
                         </tr>
 
                         <tr>
-                            <th>
-                                <label for="otherConvenienceDescription" class="h6">Other Convenience
-                                    Description:</label>
-                            </th>
+                            <td> Other Convenience Description: </td>
                             <td id="otherConvenienceDescription"></td>
                         </tr>
 
                         <tr>
-                            <th>
-                                <label for="poolArea" class="h6">Pool Area:</label>
-                            </th>
+                            <td> Pool Area: </td>
                             <td id="poolArea"></td>
                         </tr>
 
                         <tr>
-                            <th>
-                                <label for="numberOfFloors" class="h6">Number of Floors:</label>
-                            </th>
+                            <td> Number Of Floors: </td>
                             <td id="numberOfFloors"></td>
                         </tr>
 
                         <tr>
-                            <th>
-                                <label for="freeFacility" class="h6">Free Facility:</label>
-                            </th>
+                            <td> Free Facility: </td>
                             <td id="freeFacility"></td>
                         </tr>
                         <tr>
-                            <th>
-                                <label for="rentType" class="h6">Rent Type:</label>
-                            </th>
+                            <td> Rent Type: </td>
                             <td id="rentType"></td>
                         </tr>
                     </table>
@@ -243,7 +233,27 @@
     function infoView(id, name,
                       area, cost,
                       maxPeople, rentType,
-                      facilityType) {
+                      facilityType, standardRoom,
+                      numberOfFloors, descriptionOtherConvenience,
+                      poolArea, facilityFree) {
+
+        $("#id").text(id);
+        $("#name").text(name);
+        $("#area").text(area);
+        $("#cost").text(cost);
+        $("#maxPeople").text(maxPeople);
+        $("#rentType").text(rentType);
+        $("#facilityType").text(facilityType);
+        $("#standardRoom").text(standardRoom);
+        $("#numberOfFloors").text(numberOfFloors);
+        $("#otherConvenienceDescription").text(descriptionOtherConvenience);
+        $("#poolArea").text(poolArea);
+        $("#facilityFree").text(facilityFree);
+    }
+    function deleteFacility(id, name){
+        $("#nameDelete").text(name);
+        $("#idDelete").val(id);
+
     }
 </script>
 </body>
