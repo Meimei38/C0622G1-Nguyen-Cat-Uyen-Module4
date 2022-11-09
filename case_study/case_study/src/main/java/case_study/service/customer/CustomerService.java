@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 @Service
 public class CustomerService implements ICustomerService{
     @Autowired
@@ -32,5 +34,10 @@ public class CustomerService implements ICustomerService{
     @Override
     public void update(Customer customer) {
         customerRepository.save(customer);
+    }
+
+    @Override
+    public List<Customer> findAllCustomer() {
+        return customerRepository.findAllCustomer();
     }
 }

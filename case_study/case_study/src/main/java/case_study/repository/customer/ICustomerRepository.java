@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-
+import java.util.List;
 
 
 @Repository
@@ -19,9 +19,10 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
             "and name like %:nameSearch% " +
             "and email like %:emailSearch% " +
             "and customer_type_id like %:customerTypeSearch%", nativeQuery = true)
-    Page<Customer> findAllCustomersExist(Pageable pageable, @Param("nameSearch") String name, @Param("emailSearch") String email,@Param("customerTypeSearch") String customerType);
+    Page<Customer> findAllCustomersExist(Pageable pageable, @Param("nameSearch") String name, @Param("emailSearch") String email, @Param("customerTypeSearch") String customerType);
 
     Customer findByIdAndIsPresent(Integer id, Integer status);
 
-
+    @Query(value = "select * from Customer where is_present = 1", nativeQuery = true)
+    List<Customer> findAllCustomer();
 }

@@ -41,7 +41,7 @@
                     <input hidden type="text" id="id" th:field="*{id}">
 
                     <div class="form-group">
-                        <label class="h6" for="facilityType">Facility Type:</label>
+                        <label class="h6" for="facilityType" >Facility Type:</label>
                         <div class="input-group">
                             <select id="facilityType" class="form-select" th:field="*{facilityType.id}">
                                 <option th:value="${''}">Choose Facility</option>
@@ -164,8 +164,12 @@
 <script>
     $("#auto-click").click();
 
-    function changeForm(type) {
+    $("#facilityType").change(function () {
+        let type= parseInt($("#facilityType").val());
+        changeForm(type);
+    })
 
+    function changeForm(type) {
         switch (type) {
             case 1:
                 document.getElementById("standardRoomForm").style.display = "block";
@@ -173,6 +177,8 @@
                 document.getElementById("poolAreaForm").style.display = "block";
                 document.getElementById("numberOfFloorsForm").style.display = "block";
                 document.getElementById("facilityFreeForm").style.display = "none";
+                console.log('villa')
+
                 break;
             case 2:
                 document.getElementById("standardRoomForm").style.display = "block";
@@ -180,6 +186,7 @@
                 document.getElementById("poolAreaForm").style.display = "none";
                 document.getElementById("numberOfFloorsForm").style.display = "block";
                 document.getElementById("facilityFreeForm").style.display = "none";
+                console.log('home')
                 break;
             case 3:
                 document.getElementById("standardRoomForm").style.display = "none";
@@ -187,6 +194,7 @@
                 document.getElementById("poolAreaForm").style.display = "none";
                 document.getElementById("numberOfFloorsForm").style.display = "none";
                 document.getElementById("facilityFreeForm").style.display = "block";
+                console.log('room')
                 break
             default:
                 document.getElementById("standardRoomForm").style.display = "none";

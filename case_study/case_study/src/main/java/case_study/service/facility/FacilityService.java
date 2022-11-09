@@ -55,4 +55,9 @@ public class FacilityService implements IFacilityService{
         return facilityRepository.findByIdAndIsPresent(id, 1);
     }
 
+    @Override
+    public List<Facility> findAllFacility() {
+        return facilityRepository.findAllFacility();
+    }
+
 }

@@ -15,4 +15,6 @@ public interface IFacilityService {
     Page<Facility> findFacilityExist(Pageable pageable, String searchName, String searchFacilityType);
 
     Facility findById(Integer id);
+
+    List<Facility> findAllFacility();
 }

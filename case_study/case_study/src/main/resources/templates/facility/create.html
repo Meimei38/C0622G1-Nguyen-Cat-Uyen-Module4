@@ -162,7 +162,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     function changeForm(type) {
-        let selectType = type.value;
+        let selectType = parseInt(type.value);
         switch (selectType) {
             case "1":
                 document.getElementById("standardRoomForm").style.display = "block";

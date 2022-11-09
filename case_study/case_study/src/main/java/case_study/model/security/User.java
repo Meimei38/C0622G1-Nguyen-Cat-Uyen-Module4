@@ -4,14 +4,15 @@ import case_study.model.employee.Employee;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-public class User {
-    @Id
+public class User implements Serializable {
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(unique = true)
+    @Id
     private String username;
     private String password;
     @Column(columnDefinition = "bit default 1")

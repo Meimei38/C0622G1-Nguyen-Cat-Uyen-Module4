@@ -4,8 +4,10 @@ import case_study.model.customer.Customer;
 import case_study.model.employee.Employee;
 import case_study.model.facility.Facility;
 import case_study.model.facility.FacilityType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
@@ -20,16 +22,19 @@ public class Contract {
     private Double deposit;
     @Column(columnDefinition = "bit default 1")
     private Integer isPresent;
+
     @ManyToOne()
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;
-
+    @JsonBackReference
     @OneToMany(mappedBy = "contract")
     private Set<ContractDetail> contractDetails;
+
 
     @ManyToOne()
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;
+
 
     @ManyToOne()
     @JoinColumn(name="facility_id", referencedColumnName = "id")
@@ -121,4 +126,5 @@ public class Contract {
     public void setFacility(Facility facility) {
         this.facility = facility;
     }
+
 }

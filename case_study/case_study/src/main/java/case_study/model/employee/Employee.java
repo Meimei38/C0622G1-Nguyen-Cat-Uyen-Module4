@@ -2,13 +2,15 @@ package case_study.model.employee;
 
 import case_study.model.contract.Contract;
 import case_study.model.security.User;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-public class Employee {
+public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -37,6 +39,7 @@ public class Employee {
     @JoinColumn(name = "username", referencedColumnName = "username")
     private User user;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "employee")
     private Set<Contract> contractSet;
 

@@ -19,4 +19,7 @@ public interface IFacilityRepository extends JpaRepository<Facility, Integer> {
     Page<Facility> findFacilityExist(Pageable pageable, @Param("searchName") String searchName, @Param("searchFacilityType") String searchFacilityType);
 
     Facility findByIdAndIsPresent(Integer id, Integer isPresent);
+
+    @Query(value = "select * from Facility where is_present = 1 ", nativeQuery = true)
+    List<Facility> findAllFacility();
 }

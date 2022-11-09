@@ -61,6 +61,7 @@ UPDATE `cs4_furama`.`employee` SET `username` = 'donghanguyen@gmail.com' WHERE (
 UPDATE `cs4_furama`.`employee` SET `username` = 'hoangtong@gmail.com' WHERE (`id` = '9');
 UPDATE `cs4_furama`.`employee` SET `username` = 'nguyencongdao12@gmail.com' WHERE (`id` = '10');
 -- Thêm thông tin vào user role
+SET FOREIGN_KEY_CHECKS=0;
 INSERT INTO `cs4_furama`.`user_role` (`user_id`, `role_id`) VALUES ('1', '1');
 INSERT INTO `cs4_furama`.`user_role` (`user_id`, `role_id`) VALUES ('2', '1');
 INSERT INTO `cs4_furama`.`user_role` (`user_id`, `role_id`) VALUES ('3', '1');

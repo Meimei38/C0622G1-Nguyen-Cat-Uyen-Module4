@@ -1,5 +1,7 @@
 package case_study.model.contract;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 @Entity
@@ -13,7 +15,7 @@ public class AttachFacility {
     private String status;
     @Column(columnDefinition = "bit default 1")
     private Integer isPresent;
-
+    @JsonBackReference
     @OneToMany(mappedBy = "attachFacility")
     private Set<ContractDetail> contractDetail;
 
