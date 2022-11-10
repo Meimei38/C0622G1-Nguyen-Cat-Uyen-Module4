@@ -1,9 +1,19 @@
 package case_study.model.contract;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 
 @Entity
 public class ContractDetail {
+    public ContractDetail(Integer quantity, Integer isPresent, AttachFacility attachFacility, Contract contract) {
+        this.quantity = quantity;
+        this.isPresent = isPresent;
+        this.attachFacility = attachFacility;
+        this.contract = contract;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Integer id;
@@ -11,11 +21,13 @@ public class ContractDetail {
     @Column(columnDefinition = "bit default 1")
     private Integer isPresent;
 
+
     @ManyToOne
     @JoinColumn(name = "attach_facility_id", referencedColumnName = "id")
     private AttachFacility attachFacility;
 
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "contract_id", referencedColumnName = "id")
     private Contract contract;
 

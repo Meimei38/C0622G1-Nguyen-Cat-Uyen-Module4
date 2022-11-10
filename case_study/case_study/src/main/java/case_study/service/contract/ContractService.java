@@ -21,4 +21,9 @@ public class ContractService implements IContractService {
         return contractRepository.findContractExist(pageable);
     }
 
+    @Override
+    public void save(Contract contract) {
+        contractRepository.save(contract);
+    }
+
 }

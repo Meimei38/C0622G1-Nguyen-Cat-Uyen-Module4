@@ -14,6 +14,8 @@
 </style>
 <body>
 <div class="row">
+    <div th:replace="/layout/list :: logo"></div>
+
     <h1>
         List
     </h1>
@@ -21,7 +23,6 @@
         <h4 th:text="${mess}"></h4>
     </th:if>
 </div>
-
 <div class="row d-flex" style="padding-left: 30px; padding-right: 30px">
     <form action="/facility/create" method="get" style="width: 50%; float: left">
         <input type="hidden" name="action" value="add">
